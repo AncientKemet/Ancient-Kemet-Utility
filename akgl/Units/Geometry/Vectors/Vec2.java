@@ -6,7 +6,7 @@ package akgl.Units.Geometry.Vectors;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class Vec2 extends Vec1 {
 

@@ -163,12 +163,14 @@ public final class GLObject extends GLUnit {
         extensions.remove(extension);
     }
 
+    @SuppressWarnings("deprecation")
     private final void updateChildren() {
         for (GLUnit child : getChildren()) {
             child.Update();
         }
     }
 
+    @SuppressWarnings("deprecation")
     private final void update2DChildren() {
         for (GLUnit child : getChildren()) {
             child.Update2D();

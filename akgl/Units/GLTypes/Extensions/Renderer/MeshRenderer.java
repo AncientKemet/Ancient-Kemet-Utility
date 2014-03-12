@@ -5,7 +5,7 @@ import akgl.Units.GLTypes.Extensions.GLRenderer;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class MeshRenderer extends GLRenderer {
 

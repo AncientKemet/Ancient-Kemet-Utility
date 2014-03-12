@@ -22,7 +22,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class ArmatureRenderer extends GLRenderer {
 

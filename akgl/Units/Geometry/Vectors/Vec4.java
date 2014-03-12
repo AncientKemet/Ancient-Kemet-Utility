@@ -6,18 +6,18 @@ package akgl.Units.Geometry.Vectors;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class Vec4 extends Vec3 {
-  
-  private float w;
 
-  public float getW() {
-    return w;
-  }
+    private float w;
 
-  public void setW(float w) {
-    this.w = w;
-  }
-  
+    public float getW() {
+        return w;
+    }
+
+    public void setW(float w) {
+        this.w = w;
+    }
+
 }

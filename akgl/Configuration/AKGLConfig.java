@@ -1,10 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- *//*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package akgl.Configuration;
 
 import java.util.Hashtable;
@@ -14,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class AKGLConfig {
 
@@ -27,7 +20,7 @@ public class AKGLConfig {
         return instance;
     }
 
-  /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
     private Hashtable<String, Boolean> settings = new Hashtable<String, Boolean>();
     private List<String> properties = new LinkedList<String>();
 

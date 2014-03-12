@@ -6,7 +6,7 @@ import org.lwjgl.opengl.GL11;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class GLTransform extends GLObjectExtension {
 
@@ -26,6 +26,11 @@ public class GLTransform extends GLObjectExtension {
         return scale;
     }
 
+    /**
+     *
+     * @deprecated uses deprecated OpenGL.
+     */
+    @Deprecated
     public void pushMatrixLocal() {
         GL11.glPushMatrix();
         GL11.glTranslatef(position.getX(), position.getY(), position.getZ());
@@ -33,6 +38,11 @@ public class GLTransform extends GLObjectExtension {
         GL11.glScalef(scale.getX(), scale.getY(), scale.getZ());
     }
 
+    /**
+     *
+     * @deprecated uses deprecated OpenGL.
+     */
+    @Deprecated
     public void popMatrixLocal() {
         GL11.glPopMatrix();
     }

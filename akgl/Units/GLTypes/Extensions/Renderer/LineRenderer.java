@@ -6,8 +6,11 @@ import java.util.*;
 import static org.lwjgl.opengl.GL11.*;
 
 /**
+ * Deprecated use only for test purpose.
+ *
  * @author Robert Kollar
  */
+@Deprecated
 public class LineRenderer extends GLRenderer {
 
     private ArrayList<Vec3> vertices = new ArrayList<Vec3>();

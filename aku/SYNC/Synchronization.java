@@ -10,35 +10,35 @@ import java.util.List;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class Synchronization {
-  
-  public static List<SyncManager> list = new LinkedList<SyncManager>();
 
-  private static int PTR = 0;
-  private static Data outBuffer = new Data(0);
+    public static List<SyncManager> list = new LinkedList<SyncManager>();
 
-  public static Data getOutBuffer() {
-    return outBuffer;
-  }
-  
-  public static boolean inData(String fileName, byte[] data){
-    for (SyncManager sm : list) {
-      if(sm.fileName.equals(fileName)){
-        sm.file.setBytesToWrite(data);
-        return true;
-      }
+    private static int PTR = 0;
+    private static Data outBuffer = new Data(0);
+
+    public static Data getOutBuffer() {
+        return outBuffer;
     }
-    return false;
-  }
-  
-  public static void progress(){
-    if(list.size() > PTR){
-      list.get(PTR).SyncrhonizationProgress();
-      outBuffer.addBytes(list.get(PTR).getOutBuffer().buffer());
+
+    public static boolean inData(String fileName, byte[] data) {
+        for (SyncManager sm : list) {
+            if (sm.fileName.equals(fileName)) {
+                sm.file.setBytesToWrite(data);
+                return true;
+            }
+        }
+        return false;
     }
-    PTR++;
-  }
-  
+
+    public static void progress() {
+        if (list.size() > PTR) {
+            list.get(PTR).SyncrhonizationProgress();
+            outBuffer.addBytes(list.get(PTR).getOutBuffer().buffer());
+        }
+        PTR++;
+    }
+
 }

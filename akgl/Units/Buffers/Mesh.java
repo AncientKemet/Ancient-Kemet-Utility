@@ -1,10 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- *//*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package akgl.Units.Buffers;
 
 import akgl.Units.Geometry.*;
@@ -26,7 +19,7 @@ import static org.lwjgl.opengl.GL15.glBindBuffer;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class Mesh {
 

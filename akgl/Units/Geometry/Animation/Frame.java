@@ -9,9 +9,9 @@ import java.util.List;
 
 /**
  *
- * @author Von Bock
+ * @author Robert Kollar
  */
 public class Frame {
 
-  public List<Bone> bones = new LinkedList<Bone>();
+    public List<Bone> bones = new LinkedList<Bone>();
 }
