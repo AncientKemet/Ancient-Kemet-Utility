@@ -38,6 +38,12 @@ public class SlicedSprite extends BaseSprite {
     @Override
     public void OnPreRender() {
         if (rebuildMeshFlag) {
+            if (dimesion.getX() < 0) {
+                dimesion.setX(0);
+            }
+            if (dimesion.getY() < 0) {
+                dimesion.setY(0);
+            }
             mesh = rebuildMesh();
         }
     }

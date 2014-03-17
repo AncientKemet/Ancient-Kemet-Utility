@@ -20,9 +20,6 @@ public class PasswordTextfield extends TextField {
 
         Vec2 textBounds = textLabel.getBounds();
 
-        slicedSprite.getDimesion().setX(textBounds.getX() / 2f - 8);
-        slicedSprite.getDimesion().setY(textBounds.getY() / 2f - 8);
-
         slicedSprite.forceBuild();
     }
 

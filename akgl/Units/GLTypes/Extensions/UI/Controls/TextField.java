@@ -15,6 +15,8 @@ public class TextField extends SimpleButton {
 
     protected TextLabel textLabel;
     protected String text = "";
+    protected boolean multipleLinesAllowed = false;
+    protected int maxCharacters = -1;
 
     @Override
     protected void onExtensionAdded() {
@@ -40,6 +42,18 @@ public class TextField extends SimpleButton {
         slicedSprite.getDimesion().setY(textBounds.getY() / 2f - 8);
 
         slicedSprite.forceBuild();
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setMaxCharacters(int maxCharacters) {
+        this.maxCharacters = maxCharacters;
+    }
+
+    public int getMaxCharacters() {
+        return maxCharacters;
     }
 
     public void onCharacter(char c) {
