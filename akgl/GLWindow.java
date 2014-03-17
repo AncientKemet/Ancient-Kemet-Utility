@@ -8,7 +8,7 @@ import org.lwjgl.input.*;
 import org.lwjgl.opengl.*;
 
 public class GLWindow {
-
+//this is a test
     public static void main(String[] args) {
         GLWindow game = new GLWindow();
         try {

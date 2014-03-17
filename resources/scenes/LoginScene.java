@@ -31,7 +31,7 @@ public class LoginScene {
      */
     private void constructScene() {
         //creating an simple sprite
-        ButtonWithText button = new ButtonWithText();
+        login_button button = new login_button();
 
         //creating an object that will hold this sprite
         GLObject buttonHolder = new GLObject(sceneRoot2D);
@@ -42,7 +42,7 @@ public class LoginScene {
         buttonHolder.getTransform().getLocalPosition().setY(500);
         //adding the button to the object
         buttonHolder.addExtension(button);
-        button.setButtonText("Login");
+
 
         {
             TextField textfield = new TextField();
@@ -57,6 +57,7 @@ public class LoginScene {
             //adding the button to the object
             o.addExtension(textfield);
             textfield.setText("");
+            button.setUsername(textfield);
         }
 
         {
@@ -72,6 +73,7 @@ public class LoginScene {
             //adding the button to the object
             o.addExtension(textfield);
             textfield.setText("");
+            button.setPassword(textfield);
         }
 
     }
