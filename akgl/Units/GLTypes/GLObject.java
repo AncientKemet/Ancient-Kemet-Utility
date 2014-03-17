@@ -8,8 +8,6 @@ import java.util.ArrayList;
 /**
  *
  * @author Robert Kollar
- *
- * UNITY AKA GameObject
  */
 public final class GLObject extends GLUnit {
 
@@ -30,7 +28,7 @@ public final class GLObject extends GLUnit {
      *
      * @return the parent
      */
-    public GLUnit getParent() {
+    public GLObject getParent() {
         return parent;
     }
 
@@ -94,7 +92,7 @@ public final class GLObject extends GLUnit {
     }
 
     /**
-     * Every frame render.
+     * Every frame onRender3D.
      */
     @Override
     public final void onRender() {
@@ -105,7 +103,7 @@ public final class GLObject extends GLUnit {
                     extension.onRender();
                 }
                 if (renderer != null) {
-                    renderer.render();
+                    renderer.render3D();
                 }
                 updateChildren();
             }
@@ -116,7 +114,7 @@ public final class GLObject extends GLUnit {
     }
 
     /**
-     * Every frame render 2d.
+     * Every frame onRender3D 2d.
      */
     @Override
     public void onRender2D() {

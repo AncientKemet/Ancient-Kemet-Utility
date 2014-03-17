@@ -7,4 +7,21 @@ import akgl.Units.GLTypes.GLObjectExtension;
  */
 public class UIBaseObject extends GLObjectExtension {
 
+    public enum UIAnchor {
+
+        Center
+    }
+
+    @Override
+    protected void onExtensionAdded() {
+        super.onExtensionAdded();
+        UIManager.getInstance().registerUIObject(this);
+    }
+
+    @Override
+    protected void onExtensionRemoved() {
+        super.onExtensionRemoved();
+        UIManager.getInstance().unRegisterUIObject(this);
+    }
+
 }

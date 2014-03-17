@@ -121,8 +121,12 @@ public class AncientKemetRegistry {
          */ return folderDir;
     }
 
+    /**
+     *
+     * @return http://olblood.mzzhost.com/client-beta/data/
+     */
     public static String getDataHost() {
-        return "http://olblood.mzzhost.com/client";
+        return "http://olblood.mzzhost.com/client-beta/data/";
     }
 
     public static String getServerDataFolder() {

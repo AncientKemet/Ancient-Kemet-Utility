@@ -20,14 +20,14 @@ public class MeshRenderer extends GLRenderer {
     }
 
     @Override
-    public void render() {
+    public void onRender3D() {
         if (mesh != null) {
             mesh.render();
         }
     }
 
     @Override
-    public void render2D() {
+    public void onRender2D() {
     }
 
 }

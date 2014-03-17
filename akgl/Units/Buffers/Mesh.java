@@ -3,15 +3,20 @@ package akgl.Units.Buffers;
 import akgl.Units.Geometry.*;
 import akgl.Units.Geometry.Vectors.*;
 import java.util.*;
+import org.lwjgl.opengl.GL11;
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
 import static org.lwjgl.opengl.GL11.GL_NORMAL_ARRAY;
+import static org.lwjgl.opengl.GL11.GL_TEXTURE_COORD_ARRAY;
 import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
 import static org.lwjgl.opengl.GL11.GL_UNSIGNED_INT;
 import static org.lwjgl.opengl.GL11.GL_VERTEX_ARRAY;
 import static org.lwjgl.opengl.GL11.glDisableClientState;
 import static org.lwjgl.opengl.GL11.glDrawElements;
+import static org.lwjgl.opengl.GL11.glDrawElements;
 import static org.lwjgl.opengl.GL11.glEnableClientState;
 import static org.lwjgl.opengl.GL11.glNormalPointer;
+import static org.lwjgl.opengl.GL11.glNormalPointer;
+import static org.lwjgl.opengl.GL11.glVertexPointer;
 import static org.lwjgl.opengl.GL11.glVertexPointer;
 import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
 import static org.lwjgl.opengl.GL15.GL_ELEMENT_ARRAY_BUFFER;
@@ -66,6 +71,10 @@ public class Mesh {
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer.getBufferId());
         glVertexPointer(3, GL_FLOAT, 0, 0);
 
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer.getBufferId());
+        GL11.glTexCoordPointer(2, GL_FLOAT, 0, 0);
+
         if (useNormals) {
             glEnableClientState(GL_NORMAL_ARRAY);
             glBindBuffer(GL_ARRAY_BUFFER, normalBuffer.getBufferId());
@@ -83,7 +92,7 @@ public class Mesh {
         glDisableClientState(GL_ELEMENT_ARRAY_BUFFER);
     }
 
-    private void uploadDataToGPU() {
+    public void uploadDataToGPU() {
         reupload = false;
         float[] vertData = new float[vertices.size() * 3];
         float[] normData;

@@ -36,8 +36,6 @@ public class Texture {
      * The ratio of the height of the image to the texture
      */
     private float heightRatio;
-    private String name;
-    private int type;
 
     /**
      * Create a new texture
@@ -45,8 +43,7 @@ public class Texture {
      * @param target    The GL target
      * @param textureID The GL texture ID
      */
-    public Texture(int target, int textureID, String n) {
-        this.name = n;
+    public Texture(int target, int textureID) {
         this.target = target;
         this.textureID = textureID;
     }
@@ -156,15 +153,10 @@ public class Texture {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
+    /**
+     * Removes the texture from gpu memory.
+     */
+    public void delete() {
+        glDeleteTextures(textureID);
     }
 }

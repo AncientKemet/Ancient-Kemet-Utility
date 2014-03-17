@@ -38,4 +38,10 @@ public class Vec3 extends Vec2 {
         return v;
     }
 
+    public void add(Vec3 vec) {
+        setX(getX() + vec.getX());
+        setY(getY() + vec.getY());
+        setZ(getZ() + vec.getZ());
+    }
+
 }

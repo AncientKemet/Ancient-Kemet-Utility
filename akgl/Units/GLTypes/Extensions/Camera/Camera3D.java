@@ -37,12 +37,12 @@ public class Camera3D extends CameraBase {
         glEnable(GL_DEPTH_TEST);
 
         GLU.gluLookAt(
-                getgLObject().getTransform().getPosition().getX(),
-                getgLObject().getTransform().getPosition().getY() + 5,
-                getgLObject().getTransform().getPosition().getZ() + 5,
-                getgLObject().getTransform().getPosition().getX(),
-                getgLObject().getTransform().getPosition().getY(),
-                getgLObject().getTransform().getPosition().getZ(), 0, 1, 0);
+                getgLObject().getTransform().getLocalPosition().getX(),
+                getgLObject().getTransform().getLocalPosition().getY() + 5,
+                getgLObject().getTransform().getLocalPosition().getZ() + 5,
+                getgLObject().getTransform().getLocalPosition().getX(),
+                getgLObject().getTransform().getLocalPosition().getY(),
+                getgLObject().getTransform().getLocalPosition().getZ(), 0, 1, 0);
 
         glRotatef(getgLObject().getTransform().getRotation().getY(), 0, 1, 0);
 

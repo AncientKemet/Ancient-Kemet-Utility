@@ -16,7 +16,7 @@ public class LineRenderer extends GLRenderer {
     private ArrayList<Vec3> vertices = new ArrayList<Vec3>();
 
     @Override
-    public void render() {
+    public void onRender3D() {
         glBegin(GL_LINE_STRIP);
         for (Vec3 vec3 : vertices) {
             glVertex3f(vec3.getX(), vec3.getY(), vec3.getZ());
@@ -25,7 +25,7 @@ public class LineRenderer extends GLRenderer {
     }
 
     @Override
-    public void render2D() {
+    public void onRender2D() {
         glBegin(GL_LINE_STRIP);
         for (Vec3 vec3 : vertices) {
             glVertex2f(vec3.getX(), vec3.getY());

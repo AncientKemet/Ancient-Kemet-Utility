@@ -1,5 +1,7 @@
 package akgl.Units.GLTypes;
 
+import akgl.Units.GLTypes.Extensions.GLTransform;
+
 /**
  * GLObjectExtension is a component to any<br>
  * GLObject, giving it any additional processing.
@@ -19,15 +21,16 @@ public class GLObjectExtension {
         return gLObject;
     }
 
+    public final GLTransform getTransform() {
+        return getgLObject().getTransform();
+    }
+
     /**
      * Set or move this extension to other GLObject
      *
      * @param gLObject the GLObject
      */
     public final void setgLObject(GLObject gLObject) {
-        if (gLObject != null) {
-            gLObject.removeExtension(this);
-        }
         if (gLObject == null) {
             onExtensionRemoved();
         } else {

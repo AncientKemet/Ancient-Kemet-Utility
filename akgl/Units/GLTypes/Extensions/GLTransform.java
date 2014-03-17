@@ -14,8 +14,17 @@ public class GLTransform extends GLObjectExtension {
     private Vec3 rotation = new Vec3();
     private Vec3 scale = Vec3.getOne();
 
-    public Vec3 getPosition() {
+    public Vec3 getLocalPosition() {
         return position;
+    }
+
+    public Vec3 getWorldPosition() {
+        Vec3 worldPosition = new Vec3();
+        worldPosition.add(position);
+        if (getgLObject().getParent() != null) {
+            worldPosition.add(getgLObject().getParent().getTransform().getWorldPosition());
+        }
+        return worldPosition;
     }
 
     public Vec3 getRotation() {

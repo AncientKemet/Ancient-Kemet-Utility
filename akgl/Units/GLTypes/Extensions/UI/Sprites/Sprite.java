@@ -1,19 +1,21 @@
-package resources.scenes;
+package akgl.Units.GLTypes.Extensions.UI.Sprites;
 
 import akgl.Units.GLTypes.Extensions.Camera.CameraBase;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.BaseSprite;
 import akgl.Units.Geometry.Vectors.Vec2;
+import akgl.Units.Geometry.Vectors.Vec4;
+import akgl.Units.Shaders.extensions.SpriteShader.SpriteShader;
 import org.lwjgl.input.Keyboard;
 
 /**
  * @author Robert Kollar
  */
-//notice that im extending base sprite
-public class CustomizedSprite extends BaseSprite {
+public class Sprite extends BaseSprite {
 
     @Override
     public void SetupSprite() {
         System.out.println("My sprite has been constructed NOW!");
+        setTexture("simple");
     }
 
     @Override
@@ -26,17 +28,15 @@ public class CustomizedSprite extends BaseSprite {
         {
             //follow the cursor if space is down
             if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
-                getgLObject().getTransform().getPosition().setX(mousePositon.getX());
-                getgLObject().getTransform().getPosition().setY(mousePositon.getY());
+                getgLObject().getTransform().getLocalPosition().setX(mousePositon.getX());
+                getgLObject().getTransform().getLocalPosition().setY(mousePositon.getY());
             }
 
             // resize the sprite to half if a mouse is over it
             if (isMouseHoveringOver(mousePositon)) {
-                getScale().setX(100);
-                getScale().setY(100);
+                SpriteShader.getInstance().setColor(new Vec4(1.5f, 1.5f, 1.5f, 1));
             } else {
-                getScale().setX(200);
-                getScale().setY(200);
+                SpriteShader.getInstance().setColor(new Vec4(1, 1, 1, 1));
             }
         }
     }

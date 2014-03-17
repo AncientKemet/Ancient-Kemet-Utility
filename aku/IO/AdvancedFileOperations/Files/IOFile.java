@@ -1,8 +1,11 @@
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
+ *//*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
-package aku.SYNC;
+package aku.IO.AdvancedFileOperations.Files;
 
 import aku.AncientKemetRegistry;
 import aku.Data;
@@ -18,12 +21,12 @@ import java.util.logging.Logger;
  *
  * @author Robert Kollar
  */
-public class AncientKemetFile extends File {
+public class IOFile extends File {
 
     FileInputStream inputStream;
     FileOutputStream outputStream;
 
-    public AncientKemetFile(String pathname) {
+    public IOFile(String pathname) {
         super(AncientKemetRegistry.getFolderDir() + pathname);
     }
 
@@ -31,7 +34,7 @@ public class AncientKemetFile extends File {
         try {
             return getData(getInputStream().available());
         } catch (IOException ex) {
-            Logger.getLogger(AncientKemetFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -58,7 +61,7 @@ public class AncientKemetFile extends File {
                 outputStream.write(data, start, step);
             }
         } catch (IOException ex) {
-            Logger.getLogger(AncientKemetFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -90,7 +93,7 @@ public class AncientKemetFile extends File {
             d.setOffset(0);
             return d;
         } catch (IOException ex) {
-            Logger.getLogger(AncientKemetFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -103,13 +106,13 @@ public class AncientKemetFile extends File {
                 try {
                     inputStream = new FileInputStream(this);
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(AncientKemetFile.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             try {
                 available = inputStream.available();
             } catch (IOException ex) {
-                Logger.getLogger(AncientKemetFile.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
             }
             return inputStream;
         }
@@ -123,7 +126,7 @@ public class AncientKemetFile extends File {
             try {
                 outputStream = new FileOutputStream(this);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(AncientKemetFile.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return outputStream;
@@ -142,7 +145,7 @@ public class AncientKemetFile extends File {
         try {
             getOutputStream().flush();
         } catch (IOException ex) {
-            Logger.getLogger(AncientKemetFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
