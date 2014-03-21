@@ -12,7 +12,7 @@ import org.lwjgl.input.Keyboard;
  */
 public class TextField extends BaseButton {
 
-    private static TextField inputingOn = null;
+    protected static TextField inputingOn = null;
 
     protected TextLabel textLabel;
     protected String text = "";

@@ -4,6 +4,7 @@ import akgl.Units.GLTypes.Extensions.UI.Controls.*;
 import akgl.Units.GLTypes.Extensions.UI.*;
 import akgl.Units.GLTypes.*;
 import akgl.Units.GLTypes.Extensions.UI.Controls.TextField;
+import akgl.Units.GLTypes.Extensions.UI.Controls.textfields.NamedTextField;
 import akgl.Units.GLTypes.Extensions.UI.Controls.textfields.PasswordTextfield;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.SlicedSprite;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.Sprite;
@@ -27,6 +28,7 @@ public class XMLComponentHandler {
         xmlComponents.put("slicedsprite", SlicedSprite.class);
         xmlComponents.put("password", PasswordTextfield.class);
         xmlComponents.put("textfield", TextField.class);
+        xmlComponents.put("textfieldname", NamedTextField.class);
     }
 
     public static void loadComponentToObject(GLObject glo, Node node) {
