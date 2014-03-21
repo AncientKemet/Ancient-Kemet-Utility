@@ -47,9 +47,11 @@ public class NamedTextField extends TextField {
     @Override
     public void loadFromXML(Node node) {
         super.loadFromXML(node);
-        if(node.getAttributes().getNamedItem("namedtextfield")!=null);
           Node nameoftextfield = node.getAttributes().getNamedItem("namedtextfield");
-          
+      
+          if (nameoftextfield != null) {
+            textLabel.setText(nameoftextfield.getNodeValue());
+        }
     }
     
 }
