@@ -61,6 +61,14 @@ public class TextField extends BaseButton {
         setText(text + c);
     }
 
+    public boolean isMultipleLinesAllowed() {
+        return multipleLinesAllowed;
+    }
+
+    public void setMultipleLinesAllowed(boolean multipleLinesAllowed) {
+        this.multipleLinesAllowed = multipleLinesAllowed;
+    }
+
     @Override
     public void onRender2D() {
         super.onRender2D();
@@ -74,7 +82,9 @@ public class TextField extends BaseButton {
                             setText(text.substring(0, text.length() - 1));
                         }
                     } else if (Keyboard.getEventKey() == 28) { // new line
-                        onCharacter('\n');
+                        if (multipleLinesAllowed) {
+                            onCharacter('\n');
+                        }
                     } else {
                         if (Character.isDefined(Keyboard.getEventCharacter())) {
                             onCharacter(Keyboard.getEventCharacter());

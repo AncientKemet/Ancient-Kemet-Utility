@@ -40,6 +40,9 @@ public class Button extends BaseButton {
     @Override
     public void loadFromXML(Node node) {
         super.loadFromXML(node);
+
+        node.getAttributes().getNamedItem("name");
+
         setButtonText(node.getTextContent().trim());
     }
 

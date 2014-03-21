@@ -8,6 +8,7 @@ import akgl.Units.GLTypes.Extensions.UI.Controls.textfields.NamedTextField;
 import akgl.Units.GLTypes.Extensions.UI.Controls.textfields.PasswordTextfield;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.SlicedSprite;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.Sprite;
+import akgl.Units.GLTypes.Extensions.UI.Text.TextLabel;
 import akgl.Units.GLTypes.Extensions.UI.UIBaseObject;
 import akgl.Units.GLTypes.Extensions.UI.UIBaseObject;
 import java.util.*;
@@ -22,7 +23,7 @@ public class XMLComponentHandler {
     private static final HashMap<String, Class<? extends UIBaseObject>> xmlComponents = new HashMap<>();
 
     static {
-        xmlComponents.put("text", TextField.class);
+        xmlComponents.put("text", TextLabel.class);
         xmlComponents.put("button", Button.class);
         xmlComponents.put("sprite", Sprite.class);
         xmlComponents.put("slicedsprite", SlicedSprite.class);

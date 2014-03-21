@@ -8,6 +8,7 @@ import akgl.Units.Shaders.extensions.SpriteShader.SpriteShader;
 import aku.IO.XML.XMLHelpers.VectorParsing;
 import java.awt.Dimension;
 import java.util.*;
+import org.lwjgl.opengl.Display;
 import org.w3c.dom.Node;
 
 /**
@@ -49,6 +50,7 @@ public class SlicedSprite extends BaseSprite {
     @Override
     public void loadFromXML(Node node) {
         super.loadFromXML(node);
+
         Node dimensionAttribute = node.getAttributes().getNamedItem("dimension");
         Node topAttribute = node.getAttributes().getNamedItem("top");
         Node leftAttribute = node.getAttributes().getNamedItem("left");
@@ -179,14 +181,20 @@ public class SlicedSprite extends BaseSprite {
         return quadMesh;
     }
 
+    /**
+     *
+     * @param mousePos
+     * @return
+     */
     @Override
     public boolean isMouseHoveringOver(Vec2 mousePos) {
         Vec3 myPosition = getgLObject().getTransform().getLocalPosition();
+
         if (getTexture() != null) {
-            if (mousePos.getX() > myPosition.getX() - getScale().getX() * (float) getTexture().getImageWidth() / 2f - dimesion.getX()
-                    && mousePos.getX() < myPosition.getX() + getScale().getX() * (float) getTexture().getImageWidth() / 2f + dimesion.getX()) {
-                if (mousePos.getY() > myPosition.getY() - getScale().getY() * (float) getTexture().getImageHeight() / 2f - dimesion.getY()
-                        && mousePos.getY() < myPosition.getY() + getScale().getY() * (float) getTexture().getImageHeight() / 2f + dimesion.getY()) {
+            if (mousePos.getX() > myPosition.getX() + Display.getWidth() / 2 - getScale().getX() * (float) getTexture().getImageWidth() / 2f - dimesion.getX()
+                    && mousePos.getX() < myPosition.getX() + Display.getWidth() / 2 + getScale().getX() * (float) getTexture().getImageWidth() / 2f + dimesion.getX()) {
+                if (mousePos.getY() > myPosition.getY() + Display.getHeight() / 2 - getScale().getY() * (float) getTexture().getImageHeight() / 2f - dimesion.getY()
+                        && mousePos.getY() < myPosition.getY() + Display.getHeight() / 2 + getScale().getY() * (float) getTexture().getImageHeight() / 2f + dimesion.getY()) {
                     return true;
                 }
             }
@@ -194,10 +202,18 @@ public class SlicedSprite extends BaseSprite {
         return false;
     }
 
+    /**
+     * Returns an size / dimension of this slicedsprite.
+     *
+     * @return the dimension
+     */
     public Vec2 getDimesion() {
         return dimesion;
     }
 
+    /**
+     * Forces this sprite to be rebuild on next render.
+     */
     public void forceBuild() {
         this.rebuildMeshFlag = true;
     }
