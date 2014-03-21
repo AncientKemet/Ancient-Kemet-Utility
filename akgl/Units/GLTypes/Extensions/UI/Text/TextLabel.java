@@ -37,7 +37,7 @@ public class TextLabel extends UIBaseObject {
     public final void onRender2D() {
         super.onRender2D();
         GLEnableDisable.Disable(GL_DEPTH_TEST);
-        SpriteShader.getInstance().setColor(color);
+        SpriteShader.getInstance().setColor(getColor());
         SpriteShader.getInstance().useShaderProgram();
         font.drawString(0, 0, text);
     }
@@ -47,7 +47,7 @@ public class TextLabel extends UIBaseObject {
     }
 
     public final Vec4 getColor() {
-        return color;
+        return getColor();
     }
 
     public String getText() {
