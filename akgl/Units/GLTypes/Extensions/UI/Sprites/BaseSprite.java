@@ -61,10 +61,6 @@ public abstract class BaseSprite extends UIBaseObject {
         return scale;
     }
 
-    public final Vec4 getColor() {
-        return color;
-    }
-
     public Mesh getMesh() {
         if (mesh == null) {
             if (texture != null) {

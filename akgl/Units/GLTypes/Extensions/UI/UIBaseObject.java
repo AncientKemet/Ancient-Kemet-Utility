@@ -12,12 +12,42 @@ import org.w3c.dom.Node;
  */
 public class UIBaseObject extends GLObjectExtension implements XMLComponent {
 
+    /**
+     * @return the enabled
+     */
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    /**
+     * @param enabled the enabled to set
+     */
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    /**
+     * @return the color
+     */
+    public Vec4 getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(Vec4 color) {
+        this.color = color;
+    }
+
     public enum UIAnchor {
 
         Center
     }
 
-    protected Vec4 color = Vec4.getOne();
+    private Vec4 color = Vec4.getOne();
+
+    private boolean enabled;
 
     public Bounds2D getBounds() {
         return null;
@@ -38,8 +68,12 @@ public class UIBaseObject extends GLObjectExtension implements XMLComponent {
     @Override
     public void loadFromXML(Node node) {
         Node colorNode = node.getAttributes().getNamedItem("color");
+        Node isEnabledNode = node.getAttributes().getNamedItem("enabled");
         if (colorNode != null) {
-            color.set(VectorParsing.parseVec4(colorNode));
+            getColor().set(VectorParsing.parseVec4(colorNode));
+        }
+        if (isEnabledNode != null) {
+            setEnabled(true);
         }
     }
 
