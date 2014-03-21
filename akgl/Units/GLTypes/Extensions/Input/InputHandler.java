@@ -24,21 +24,20 @@ public class InputHandler extends GLObjectExtension {
         }
         return instance;
     }
-
-    private KeyBoardEvent[] events = new KeyBoardEvent[1024];
+    
     private Function[] functions = new Function[1024];
 
-    public void registerFunction(KeyBoardEvent theEvent, Function theFunction) {
+    public void registerFunction(KeyBoardEvent theEvent, Function theFunction, boolean location) {
 
-        functionMap.put(theEvent, theFunction);
-    }
+            functions[theEvent.getKey()] = theFunction;
+        }
 
-    public void unRegisterFunction(Function theFunction) {
-        functionMap.remove(theFunction);
+    public void unRegisterFunction(int key) {
+        functions[key]=null;
     }
 
     public void eventHappened(KeyBoardEvent theEvent) {
-        functionMap.get(theEvent);
+        if( functions[theEvent.getKey()]!=null)
+        functions[theEvent.getKey()].run();
     }
-
 }
