@@ -1,17 +1,19 @@
 package akgl.Units.GLTypes.Extensions.UI.Controls;
 
+import akgl.Units.GLTypes.Extensions.UI.UIControl;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.SlicedSprite;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.Sprite;
 import akgl.Units.Geometry.Vectors.Vec2;
 import aku.IO.BMFontLoader;
 import akgl.Units.GLTypes.GLObject;
+import org.w3c.dom.Node;
 
 /**
  * @author Robert Kollar
  */
-public class SimpleButton extends UIControl {
+public class BaseButton extends UIControl {
 
-    protected SlicedSprite slicedSprite;
+    protected SlicedSprite slicedSprite = new SlicedSprite();
     private boolean[] down = new boolean[3];
 
     @Override
@@ -77,6 +79,12 @@ public class SimpleButton extends UIControl {
         slicedSprite.getColor().setY(slicedSprite.getColor().getY() + (1 - slicedSprite.getColor().getY()) / 10f);
         slicedSprite.getColor().setZ(slicedSprite.getColor().getZ() + (1 - slicedSprite.getColor().getZ()) / 10f);
         slicedSprite.getColor().setW(1);
+    }
+
+    @Override
+    public void loadFromXML(Node node) {
+        super.loadFromXML(node);
+        slicedSprite.loadFromXML(node);
     }
 
 }

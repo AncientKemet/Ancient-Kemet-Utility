@@ -1,5 +1,6 @@
 package akgl.Units.GLTypes.Extensions.UI.Controls;
 
+import akgl.Units.Buffers.Texture.Texture;
 import akgl.Units.GLTypes.Extensions.UI.Text.TextLabel;
 import akgl.Units.GLTypes.GLObject;
 import akgl.Units.Geometry.Vectors.Vec2;
@@ -9,7 +10,7 @@ import org.lwjgl.input.Keyboard;
 /**
  * @author Robert Kollar
  */
-public class TextField extends SimpleButton {
+public class TextField extends BaseButton {
 
     private static TextField inputingOn = null;
 
@@ -36,7 +37,7 @@ public class TextField extends SimpleButton {
         textLabel.setText(text);
         textLabel.setAnchor(textLabel.getAnchor());
 
-        Vec2 textBounds = textLabel.getBounds();
+        Vec2 textBounds = textLabel.getBounds().getSize();
 
         slicedSprite.getDimesion().setX(textBounds.getX() / 2f - 8);
         slicedSprite.getDimesion().setY(textBounds.getY() / 2f - 8);

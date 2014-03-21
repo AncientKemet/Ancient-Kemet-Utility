@@ -27,4 +27,9 @@ public class Vec2 extends Vec1 {
     public float getY() {
         return y;
     }
+
+    public void set(Vec2 parseVec2) {
+        setX(parseVec2.getX());
+        setY(parseVec2.getY());
+    }
 }

@@ -44,4 +44,10 @@ public class Vec3 extends Vec2 {
         setZ(getZ() + vec.getZ());
     }
 
+    public void set(Vec3 parseVec3) {
+        setX(parseVec3.getX());
+        setY(parseVec3.getY());
+        setZ(parseVec3.getZ());
+    }
+
 }

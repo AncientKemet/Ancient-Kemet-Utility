@@ -46,6 +46,11 @@ public class SuperShaderProgram {
         onUpdateUniforms();
     }
 
+    public static void unloadShaderProgram() {
+        currentProgramInUse = -1;
+        glUseProgram(0);
+    }
+
     /**
      * Is called if the program has been successfully binded (used).
      */

@@ -8,16 +8,18 @@ import akgl.Units.Geometry.HardCodedGeometry.Quad2DGenerator;
 import akgl.Units.Geometry.Vectors.*;
 import akgl.Units.Shaders.extensions.SpriteShader.SpriteShader;
 import aku.IO.*;
+import aku.IO.XML.XMLHelpers.VectorParsing;
+import org.w3c.dom.Node;
 
 /**
  * @author Robert Kollar
  */
 public abstract class BaseSprite extends UIBaseObject {
 
-    private Vec2 scale = new Vec2(1, 1);
-    private Vec4 color = new Vec4(1f, 1f, 1f, 1f);
+    private final Vec2 scale = new Vec2(1, 1);
+    private final Vec4 color = new Vec4(1f, 1f, 1f, 1f);
 
-    private Texture texture;
+    protected Texture texture;
     protected Mesh mesh;
 
     private SpriteRenderer renderer;
@@ -95,5 +97,16 @@ public abstract class BaseSprite extends UIBaseObject {
     public abstract void SetupSprite();
 
     public abstract void OnPreRender();
+
+    @Override
+    public void loadFromXML(Node node) {
+        super.loadFromXML(node);
+        Node textureAtt = node.getAttributes().getNamedItem("texture");
+
+        if (textureAtt != null) {
+            setTexture(textureAtt.getNodeValue());
+        }
+
+    }
 
 }

@@ -2,8 +2,8 @@ package resources.scenes;
 
 import akgl.Units.GLTypes.Extensions.UI.Sprites.Sprite;
 import akgl.AKGL;
-import akgl.Units.GLTypes.Extensions.UI.Controls.SimpleButton;
-import akgl.Units.GLTypes.Extensions.UI.Controls.ButtonWithText;
+import akgl.Units.GLTypes.Extensions.UI.Controls.BaseButton;
+import akgl.Units.GLTypes.Extensions.UI.Controls.Button;
 import akgl.Units.GLTypes.Extensions.UI.Controls.TextField;
 import akgl.Units.GLTypes.Extensions.UI.Controls.textfields.PasswordTextfield;
 import akgl.Units.GLTypes.Extensions.UI.Sprites.SlicedSprite;

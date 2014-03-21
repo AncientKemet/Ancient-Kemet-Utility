@@ -1,4 +1,4 @@
-package akgl.Units.GLTypes.Extensions.UI.Controls;
+package akgl.Units.GLTypes.Extensions.UI;
 
 import akgl.Units.GLTypes.Extensions.UI.UIBaseObject;
 import akgl.Units.Geometry.Vectors.Vec2;

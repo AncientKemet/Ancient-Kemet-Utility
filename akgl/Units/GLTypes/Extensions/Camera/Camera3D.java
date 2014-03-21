@@ -1,9 +1,12 @@
 package akgl.Units.GLTypes.Extensions.Camera;
 
-import org.lwjgl.opengl.Display;
+import akgl.Units.GLSettings.*;
+import org.lwjgl.opengl.*;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_TEST;
+import static org.lwjgl.opengl.GL11.GL_GREATER;
 import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
 import static org.lwjgl.opengl.GL11.GL_PROJECTION;
+import static org.lwjgl.opengl.GL11.glAlphaFunc;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
@@ -24,6 +27,8 @@ public class Camera3D extends CameraBase {
 
     @Override
     public void onRender() {
+        getViewportSize().setX(Display.getWidth());
+        getViewportSize().setY(Display.getHeight());
         getgLObject().getTransform().getRotation().setY(getgLObject().getTransform().getRotation().getY() + 0.05f);
 
         glViewport((int) viewportStart.getX(), (int) viewportStart.getY(), (int) viewportSize.getX(), (int) viewportSize.getY());
@@ -34,7 +39,8 @@ public class Camera3D extends CameraBase {
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
-        glEnable(GL_DEPTH_TEST);
+        GLEnableDisable.Enable(GL_DEPTH_TEST);
+        glAlphaFunc(GL_GREATER, 0.01f);
 
         GLU.gluLookAt(
                 getgLObject().getTransform().getLocalPosition().getX(),

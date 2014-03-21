@@ -232,7 +232,9 @@ public class BMFontLoader {
     }
 
     public void drawString(float x, float y, String text) {
-        drawString(x, y, text, 0, text.length() - 1);
+        if (text != null) {
+            drawString(x, y, text, 0, text.length() - 1);
+        }
     }
 
     public void drawString(float x, float y, String text,

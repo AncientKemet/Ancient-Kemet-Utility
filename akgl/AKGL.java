@@ -30,7 +30,7 @@ public class AKGL {
         root2D.addExtension(new Camera2D());
 
         //instancing test scene
-        LoginScene testScene = new LoginScene();
+        IngameScene testScene = new IngameScene();
 
         rootsHasBeenSetUp = true;
     }
@@ -43,11 +43,11 @@ public class AKGL {
             setupClass();
         }
 
-        glClearColor(0.5f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClearDepth(1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
+        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
         //Chained onRender / renderFrame
         root3D.Update();

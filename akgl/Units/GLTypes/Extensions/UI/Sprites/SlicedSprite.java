@@ -5,8 +5,10 @@ import akgl.Units.GLTypes.Extensions.Camera.CameraBase;
 import akgl.Units.Geometry.Triangle;
 import akgl.Units.Geometry.Vectors.*;
 import akgl.Units.Shaders.extensions.SpriteShader.SpriteShader;
+import aku.IO.XML.XMLHelpers.VectorParsing;
 import java.awt.Dimension;
 import java.util.*;
+import org.w3c.dom.Node;
 
 /**
  * @author Robert Kollar
@@ -23,21 +25,17 @@ public class SlicedSprite extends BaseSprite {
 
     @Override
     public void SetupSprite() {
-        setTexture("sliced");
         rebuildMeshFlag = true;
     }
 
     @Override
     public Mesh getMesh() {
-        if (mesh == null) {
-            mesh = rebuildMesh();
-        }
         return mesh;
     }
 
     @Override
     public void OnPreRender() {
-        if (rebuildMeshFlag) {
+        if (rebuildMeshFlag && getTexture() != null) {
             if (dimesion.getX() < 0) {
                 dimesion.setX(0);
             }
@@ -46,6 +44,47 @@ public class SlicedSprite extends BaseSprite {
             }
             mesh = rebuildMesh();
         }
+    }
+
+    @Override
+    public void loadFromXML(Node node) {
+        super.loadFromXML(node);
+        Node dimensionAttribute = node.getAttributes().getNamedItem("dimension");
+        Node topAttribute = node.getAttributes().getNamedItem("top");
+        Node leftAttribute = node.getAttributes().getNamedItem("left");
+        Node bottomAttribute = node.getAttributes().getNamedItem("bottom");
+        Node rightAttribute = node.getAttributes().getNamedItem("right");
+
+        if (topAttribute != null) {
+            top = Float.parseFloat(topAttribute.getNodeValue());
+            forceBuild();
+        }
+        if (topAttribute != null) {
+            top = Float.parseFloat(topAttribute.getNodeValue());
+            forceBuild();
+        }
+        if (leftAttribute != null) {
+            left = Float.parseFloat(leftAttribute.getNodeValue());
+            forceBuild();
+        }
+        if (bottomAttribute != null) {
+            bottom = Float.parseFloat(bottomAttribute.getNodeValue());
+            forceBuild();
+        }
+        if (rightAttribute != null) {
+            top = Float.parseFloat(rightAttribute.getNodeValue());
+            forceBuild();
+        }
+        if (dimensionAttribute != null) {
+            dimesion.set(VectorParsing.parseVec2(dimensionAttribute));
+            forceBuild();
+        }
+
+    }
+
+    @Override
+    public Bounds2D getBounds() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private Mesh rebuildMesh() {

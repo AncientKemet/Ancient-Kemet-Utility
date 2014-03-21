@@ -13,9 +13,9 @@ import java.util.logging.*;
  */
 public class MasterServer {
 
-    ServerSocket serverSocket;
+    private ServerSocket serverSocket;
 
-    List<Client> clients = new ArrayList<>();
+    private List<MasterClient> clients = new ArrayList<>();
 
     public MasterServer() {
         try {
@@ -33,7 +33,7 @@ public class MasterServer {
         public void run() {
             while (true) {
 
-                for (Client client : clients) {
+                for (MasterClient client : clients) {
                     client.progress();
                 }
 
@@ -42,7 +42,8 @@ public class MasterServer {
                     Socket socket = serverSocket.accept();
 
                     if (socket != null) {
-                        Client newClient = new Client(socket);
+                        MasterClient newClient = new MasterClient(socket);
+                        System.out.println("New client");
                         clients.add(newClient);
                     }
                 } catch (IOException ex) {

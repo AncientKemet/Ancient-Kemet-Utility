@@ -32,4 +32,9 @@ public class Vec4 extends Vec3 {
         return new Vec4(1, 1, 1, 1);
     }
 
+    public void set(Vec4 vec) {
+        super.set(vec);
+        setW(vec.getW());
+    }
+
 }

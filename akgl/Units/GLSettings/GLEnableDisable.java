@@ -10,7 +10,7 @@ import static org.lwjgl.opengl.GL11.glEnable;
  */
 public class GLEnableDisable {
 
-    private static boolean[] enabledGLStates = new boolean[5000];
+    private static boolean[] enabledGLStates = new boolean[50000];
 
     /**
      * Makes sure that he argument parameters are glEnabled.

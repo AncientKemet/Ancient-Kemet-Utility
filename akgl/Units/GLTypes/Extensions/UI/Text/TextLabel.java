@@ -9,16 +9,16 @@ import akgl.Units.Geometry.HardCodedGeometry.Quad2DGenerator;
 import akgl.Units.Geometry.Vectors.*;
 import akgl.Units.Shaders.extensions.SpriteShader.SpriteShader;
 import aku.IO.*;
+import aku.IO.XML.XMLHelpers.VectorParsing;
 import java.awt.Font;
 import org.lwjgl.opengl.GL11;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_TEST;
+import org.w3c.dom.Node;
 
 /**
  * @author Robert Kollar
  */
 public class TextLabel extends UIBaseObject {
-
-    private Vec4 color = new Vec4(1f, 1f, 1f, 1f);
 
     private BMFontLoader font;
     private String text = "missisng text";
@@ -67,6 +67,12 @@ public class TextLabel extends UIBaseObject {
         return anchor;
     }
 
+    @Override
+    public void loadFromXML(Node node) {
+        super.loadFromXML(node);
+        setText(node.getTextContent().trim());
+    }
+
     private void updateAnchors() {
         if (anchor == UIAnchor.Center) {
             getTransform().getLocalPosition().setX((float) -font.getWidth(text) / 2f * getScale().getX());
@@ -74,9 +80,9 @@ public class TextLabel extends UIBaseObject {
         }
     }
 
-    public Vec2 getBounds() {
-        Vec2 bounds = new Vec2(getScale().getX() * (float) font.getWidth(text), getScale().getY() * (float) font.getHeight(text));
-        return bounds;
+    @Override
+    public Bounds2D getBounds() {
+        return new Bounds2D(new Vec2(), new Vec2(getScale().getX() * (float) font.getWidth(text), getScale().getY() * (float) font.getHeight(text)));
     }
 
 }

@@ -18,8 +18,6 @@ public class PasswordTextfield extends TextField {
         textLabel.setText(hidden);
         textLabel.setAnchor(textLabel.getAnchor());
 
-        Vec2 textBounds = textLabel.getBounds();
-
         slicedSprite.forceBuild();
     }
 

@@ -12,7 +12,7 @@ import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
  *
  * @author Robert Kollar
  */
-public class MeshRenderer extends GLRenderer {
+public class TerrainRenderer extends GLRenderer {
 
     private Mesh mesh;
 
@@ -29,7 +29,8 @@ public class MeshRenderer extends GLRenderer {
     @Override
     public void onRender3D() {
         SuperShaderProgram.unloadShaderProgram();
-        GLEnableDisable.Enable(GL11.GL_LIGHTING, GL_TEXTURE_2D, GL11.GL_LIGHT0);
+        GLEnableDisable.Disable(GL_TEXTURE_2D);
+        GLEnableDisable.Enable(GL11.GL_LIGHTING, GL11.GL_LIGHT0);
         if (mesh != null) {
             if (texture != null) {
                 texture.bind();

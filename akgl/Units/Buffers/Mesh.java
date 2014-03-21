@@ -48,12 +48,12 @@ public class Mesh {
     }
 
     public void setNormals(List<Vec3> normals) {
-        useNormals = normals != null;
+        useNormals = normals != null && !normals.isEmpty();
         this.normals = normals;
     }
 
     public void setTexCoords(List<Vec2> texCoords) {
-        useTexCoords = texCoords != null;
+        useTexCoords = texCoords != null && !texCoords.isEmpty();
         this.texCoords = texCoords;
     }
 
@@ -71,10 +71,11 @@ public class Mesh {
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer.getBufferId());
         glVertexPointer(3, GL_FLOAT, 0, 0);
 
-        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-        glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer.getBufferId());
-        GL11.glTexCoordPointer(2, GL_FLOAT, 0, 0);
-
+        if (useTexCoords) {
+            glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+            glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer.getBufferId());
+            GL11.glTexCoordPointer(2, GL_FLOAT, 0, 0);
+        }
         if (useNormals) {
             glEnableClientState(GL_NORMAL_ARRAY);
             glBindBuffer(GL_ARRAY_BUFFER, normalBuffer.getBufferId());
@@ -86,6 +87,9 @@ public class Mesh {
         glDrawElements(GL_TRIANGLES, triangles.size() * 3, GL_UNSIGNED_INT, 0);
 
         glDisableClientState(GL_VERTEX_ARRAY);
+        if (useTexCoords) {
+            glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+        }
         if (useNormals) {
             glDisableClientState(GL_NORMAL_ARRAY);
         }

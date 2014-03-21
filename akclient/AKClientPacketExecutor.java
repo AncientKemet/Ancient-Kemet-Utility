@@ -1,4 +1,4 @@
-package akserver;
+package akclient;
 
 import aku.com.net.PacketExecutor;
 import aku.com.net.packets.SuperPacket;
@@ -6,13 +6,7 @@ import aku.com.net.packets.SuperPacket;
 /**
  * @author Robert Kollar
  */
-public class ClientPacketExecutor extends PacketExecutor {
-
-    private final Client client;
-
-    public ClientPacketExecutor(Client client) {
-        this.client = client;
-    }
+public class AKClientPacketExecutor extends PacketExecutor {
 
     @Override
     public void executePacket(SuperPacket packet) {

@@ -6,7 +6,7 @@ import java.net.Socket;
 /**
  * @author Robert Kollar
  */
-public class Client {
+public class MasterClient {
 
     private final Socket socket;
 
@@ -14,9 +14,9 @@ public class Client {
 
     private String username, password;
 
-    public Client(Socket socket) {
+    public MasterClient(Socket socket) {
         this.socket = socket;
-        this.communicationHandler = new CommunicationHandler(socket, new ClientPacketExecutor(this));
+        this.communicationHandler = new CommunicationHandler(socket, new MasterClientPacketExecutor(this));
     }
 
     public void progress() {
