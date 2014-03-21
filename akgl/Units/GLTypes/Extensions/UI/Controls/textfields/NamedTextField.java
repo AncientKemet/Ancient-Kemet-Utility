@@ -11,8 +11,6 @@ import org.w3c.dom.Node;
  */
 public class NamedTextField extends TextField {
 
-    String namedtextfield = new String();
-
     @Override
     public void setText(String text) {
         this.text = text;
@@ -30,7 +28,6 @@ public class NamedTextField extends TextField {
     protected void onExtensionAdded() {
         super.onExtensionAdded(); //To change body of generated methods, choose Tools | Templates.
         textLabel = new TextLabel();
-        textLabel.setText(namedtextfield);
         GLObject textLabelHolder = new GLObject(getgLObject());
         textLabelHolder.addExtension(textLabel);
         textLabel.getScale().setX(0.75f);
@@ -40,18 +37,19 @@ public class NamedTextField extends TextField {
     }
 
     public String getName() {
-        return namedtextfield;
+        return textLabel.getText();
     }
 
     public void setName(String newname) {
-        namedtextfield = newname;
+         textLabel.setText(newname);
     }
 
     @Override
     public void loadFromXML(Node node) {
         super.loadFromXML(node);
-        if(node.getAttributes().getNamedItem(namedtextfield)!=null);
-            node.getAttributes().getNamedItem(namedtextfield);
+        if(node.getAttributes().getNamedItem("namedtextfield")!=null);
+          Node nameoftextfield = node.getAttributes().getNamedItem("namedtextfield");
+          
     }
     
 }
